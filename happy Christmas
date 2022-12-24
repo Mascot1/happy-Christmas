@@ -1,0 +1,55 @@
+#include<stdio.h>
+int main()
+{
+	printf("圣诞快乐！！\n");
+	int w, j, n;
+	int hh = 0;
+	char a = ' ', b = '*', c = '#';
+	for (n = 0; n < 3; n++){
+		for (w = 0; w < n + 4; w++) {
+			for (j = 0; j < 80; j++) {
+				if ((j <= 25 + hh) && (j >= 25 - hh)) {
+					printf("\033[32m%c", c);
+				}
+				else if ((j % (n + 6) == hh) && (j > 25 + hh) || (j < 25 - hh)) {
+					printf("%c\033[31m", b);
+				}
+				else {
+					printf("%c", a);
+				}
+			}
+			printf("\n");
+			hh = hh + 2;
+		}
+		hh = hh - 2 * (n + 2);
+	}
+
+	for (w = 0; w < 5; w++)
+	{
+		for (j = 0; j < 80; j++) {
+			if (j >= 22 && j <= 28) {
+				printf("\033[33m%c", c);
+			}
+			else if ((j % (hh + 6) == hh) && ((j > 25 + hh) || (j < 25 - n))) {
+				printf("%c", b);
+			}
+			else {
+				printf("%c", a);
+			}
+		}
+		hh = hh + 2;
+		printf("\n");
+	}
+	for (w = 0; w < 3; w++) {
+		for (j = 0; j < 80; j++) {
+			if (j % 2 == 0) {
+				printf("%c\033[35m", b);
+			}
+			else {
+				printf("%c", a);
+			}
+		}
+		printf("\n");
+	}
+	return 66;
+}
